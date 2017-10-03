@@ -16,6 +16,7 @@ target_compile_features(lib_cpptemplate
 
 target_link_libraries(lib_cpptemplate
     boost
+    ${Boost_LIBRARIES}
 )
 
 set_target_properties(lib_cpptemplate PROPERTIES
