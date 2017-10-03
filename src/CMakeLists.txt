@@ -18,6 +18,20 @@ target_link_libraries(lib_cpptemplate
     boost
 )
 
+set_target_properties(lib_cpptemplate PROPERTIES
+    CXX_STANDARD_REQUIRED 17
+    CXX_EXTENSIONS OFF
+)
+
+target_compile_features(lib_cpptemplate
+    PUBLIC cxx_std_17
+)
+
+# TODO: Remove once CMake supports this in a more generic way
+if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    target_compile_options(lib_cpptemplate PUBLIC "/std:c++latest")
+endif()
+
 install(TARGETS lib_cpptemplate EXPORT cpptemplate_config
     ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
